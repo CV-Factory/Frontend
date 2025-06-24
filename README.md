@@ -101,7 +101,7 @@ CVFactory/
 ├── docker-compose.yml     # Local development/testing with Docker Compose
 ├── northflank.json        # Northflank deployment configuration
 ├── purge_cloudflare_cache.py # Script to purge Cloudflare cache
-├── LICENSE                # Project license (CC BY NC 4.0)
+├── LICENSE                # Project license (Proprietary, All Rights Reserved)
 ├── README.md              # English README
 ├── README.kr.md           # Korean README
 ├── index.html             # Main HTML file
@@ -120,8 +120,8 @@ CVFactory/
 ```
 
 ## 📄 License
-CC BY-NC 4.0 License
-(See the [LICENSE](LICENSE) file for the full text.)
+Proprietary Software – All Rights Reserved
+(See the [LICENSE](LICENSE) file for details.)
 
 ## 📬 Contact
 wintrover@gmail.com 
