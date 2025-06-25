@@ -46,7 +46,7 @@
                     },
                     "vcsData": {
                       "projectType": "github",
-                      "projectUrl": "https://github.com/wintrover/CVFactory",
+                      "projectUrl": "https://github.com/CV-Factory/Frontend",
                       "projectBranch": "main"
                     },
                     "buildSettings": {
@@ -104,7 +104,7 @@
                     },
                     "vcsData": {
                       "projectType": "github",
-                      "projectUrl": "https://github.com/wintrover/CVFactory",
+                      "projectUrl": "https://github.com/CV-Factory/Frontend",
                       "projectBranch": "main"
                     },
                     "buildSettings": {
