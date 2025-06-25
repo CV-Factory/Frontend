@@ -47,7 +47,7 @@
                     "vcsData": {
                       "projectType": "github",
                       "projectUrl": "https://github.com/wintrover/CVFactory",
-                      "projectBranch": "develop"
+                      "projectBranch": "main"
                     },
                     "buildSettings": {
                       "dockerfile": {
@@ -105,7 +105,7 @@
                     "vcsData": {
                       "projectType": "github",
                       "projectUrl": "https://github.com/wintrover/CVFactory",
-                      "projectBranch": "develop"
+                      "projectBranch": "main"
                     },
                     "buildSettings": {
                       "dockerfile": {
