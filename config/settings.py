@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',  # Add corsheaders
-    'csp',  # django-csp 앱 추가
     # Your apps here
     'core',
     'compressor', # django-compressor 추가
@@ -57,7 +56,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # Add CorsMiddleware near the top
-    'csp.middleware.CSPMiddleware', # django-csp 미들웨어 추가
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', # Add Whitenoise middleware
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -164,8 +162,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# CSP 설정 추가
-CSP_DEFAULT_SRC = ("'self'",)
-CSP_STYLE_SRC = ("'self'", "'unsafe-inline'") # 인라인 스타일 허용
-CSP_CONNECT_SRC = ("'self'", "http://localhost:8001", "http://127.0.0.1:8001", "https://cvfactory-server-627721457878.asia-northeast3.run.app", "https://csp-reporting.cloudflare.com", "https://static.cloudflareinsights.com")
