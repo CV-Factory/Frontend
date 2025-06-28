@@ -11,6 +11,7 @@ COPY . /app
 
 # Install uv globally in the container
 RUN apt-get update && apt-get install -y curl && \
+    apt-get install -y gettext && \
     curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Add uv to the PATH
@@ -23,6 +24,7 @@ RUN mkdir -p /app/staticfiles
 
 # django-compressor가 강제로 파일을 다시 압축하도록 함
 RUN python manage.py compress --force
+RUN python manage.py compilemessages
 
 RUN python manage.py collectstatic --noinput -v 3
 
