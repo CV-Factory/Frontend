@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var userStoryTextarea = document.getElementById("prompt");
   // console.log("User Story textarea element:", userStoryTextarea);
 
-  // 기본 프롬프트 내용 설정
-  const defaultPromptText = `채용 공고 내용과 다음 사용자 프롬프트를 기반으로 자기소개서를 작성해 주세요.
+  // 기본 프롬프트 내용 다국어 설정
+  const defaultPromptTextKo = `채용 공고 내용과 다음 사용자 프롬프트를 기반으로 자기소개서를 작성해 주세요.
     자기소개서는 한국어로, 전문적이고 회사와 직무에 맞춰 작성되어야 합니다.
     사용자 프롬프트에서 관련 있는 기술과 경험을 강조하고, 이를 채용 공고의 요구 사항과 연결해야 합니다.
 
@@ -33,6 +33,17 @@ document.addEventListener('DOMContentLoaded', function() {
     만약 사용자 프롬프트가 제공되지 않았다면, 채용 공고 내용만을 기반으로 자기소개서를 생성하되, 
     사용자가 자신의 특정 경험을 추가해야 할 부분을 '여기에 경험을 추가하세요'처럼 명시적으로 언급하지 않고, 
     자기소개서 내용 안에서 미묘하게 암시하도록 작성해 주세요.`;
+
+  const defaultPromptTextEn = `Using the job posting details and the following user prompt, write a cover letter. The cover letter should be written in Korean, be professional, and tailored to the company and role. Emphasize the relevant skills and experiences from the user prompt and link them to the requirements of the job posting.
+
+    1) What problem the company is facing,
+    2) What competencies and experiences I have,
+    3) How I can solve that problem for the company, described top-down with numbers and concrete figures where possible.
+
+    Use a confident and passionate tone. Instead of simply listing skills, naturally weave the user prompt into the cover letter. If a user prompt is not provided, generate the cover letter based only on the job posting, subtly implying where the user should insert their own experience without explicitly saying things like 'Add your experience here'.`;
+
+  const isKoreanPage = document.documentElement.lang.startsWith('ko');
+  const defaultPromptText = isKoreanPage ? defaultPromptTextKo : defaultPromptTextEn;
 
   if (userStoryTextarea) {
     userStoryTextarea.value = defaultPromptText;
