@@ -1,0 +1,27 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+
+# Django database and migrations
+db.sqlite3
+
+# Compiled translation files
+*.mo
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+
+# Node modules (if using Node)
+node_modules/
+
+# Docker artifacts
+*.container
+
+# macOS
+.DS_Store 
