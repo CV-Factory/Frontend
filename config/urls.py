@@ -32,6 +32,7 @@ urlpatterns = [
 # 언어 코드 접두사가 붙는 URL들
 urlpatterns += i18n_patterns(
     path('', views.index, name='index'),
+    prefix_default_language=False,
 )
 
 # 개발 환경에서만 정적 파일을 제공합니다.
