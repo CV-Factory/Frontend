@@ -16,15 +16,23 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from core import views # core.views 모듈을 임포트합니다.
+from django.urls import path, include
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from core import views # core.views 모듈을 임포트합니다.
 
+# 언어 코드가 포함되지 않은 공통 URL
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('health/', views.health_check, name='health_check'), # Add health check URL pattern
-    path('' , views.index, name='index'), # 루트 URL('')에 core.views.index 뷰를 연결합니다.
+    path('health/', views.health_check, name='health_check'),
+    # Django 기본 set_language view (POST) 활성화 – 선택사항
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
+
+# 언어 코드 접두사가 붙는 URL들
+urlpatterns += i18n_patterns(
+    path('', views.index, name='index'),
+)
 
 # 개발 환경에서만 정적 파일을 제공합니다.
 # if settings.DEBUG:
