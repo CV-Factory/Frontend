@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ko'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -130,8 +130,8 @@ USE_I18N = True
 USE_TZ = True
 
 LANGUAGES = [
-    ('ko', 'Korean'),
     ('en', 'English'),
+    ('ko', 'Korean'),
 ]
 
 # Where the translation files will reside
