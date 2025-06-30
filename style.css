@@ -1,4 +1,8 @@
-/* 기본 스타일 */
+/* 전체 요소 box-sizing 초기화 및 가로 오버플로 방지 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -7,6 +11,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden; /* 모바일 환경에서 오른쪽 잘림 방지 */
 }
 
 /* 헤더 스타일 */
@@ -25,6 +30,8 @@ main {
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
