@@ -94,7 +94,7 @@ Northflank를 사용하여 이 프로젝트를 배포할 수 있습니다. North
 
 ## 📁 프로젝트 구조
 ```
-CVFactory/
+.
 ├── manage.py              # Django 관리 스크립트
 ├── requirements.txt       # Python 종속성
 ├── Dockerfile             # Docker 이미지 정의
@@ -107,14 +107,19 @@ CVFactory/
 ├── index.html             # 메인 HTML 파일
 ├── style.css              # 메인 CSS 파일
 ├── script.js              # 메인 JavaScript 파일
+├── logo.png               # 프로젝트 로고
 ├── db.sqlite3             # 기본 SQLite 데이터베이스 파일 (개발)
+├── locale/                # 번역 파일 (po/mo)
+│   └── ko/LC_MESSAGES/django.po
+├── favicon_io/            # 파비콘 이미지 및 웹매니페스트
 ├── config/                # Django 프로젝트 설정, URL, WSGI/ASGI
+│   ├── __init__.py
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
-│   ├── wsgi.py
-│   ├── asgi.py
-│   └── __init__.py
-└── core/                  # Django 코어 애플리케이션 (뷰)
-    ├── views.py
-    └── __init__.py
+│   └── wsgi.py
+├── core/                  # Django 코어 애플리케이션 (뷰)
+│   ├── __init__.py
+│   └── views.py
+└── .git/                  # Git 버전 관리 메타데이터 (숨김)
 ```

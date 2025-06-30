@@ -94,7 +94,7 @@ You can deploy this project using Northflank. Refer to the Northflank documentat
 
 ## 📁 Project Structure
 ```
-CVFactory/
+.
 ├── manage.py              # Django management script
 ├── requirements.txt       # Python dependencies
 ├── Dockerfile             # Docker image definition
@@ -107,16 +107,21 @@ CVFactory/
 ├── index.html             # Main HTML file
 ├── style.css              # Main CSS file
 ├── script.js              # Main JavaScript file
+├── logo.png               # Project logo
 ├── db.sqlite3             # Default SQLite database file (development)
+├── locale/                # Translation files (po/mo)
+│   └── ko/LC_MESSAGES/django.po
+├── favicon_io/            # Favicon assets and webmanifest
 ├── config/                # Django project settings, URLs, WSGI/ASGI
+│   ├── __init__.py
+│   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
-│   ├── wsgi.py
-│   ├── asgi.py
-│   └── __init__.py
-└── core/                  # Django core application (views)
-    ├── views.py
-    └── __init__.py
+│   └── wsgi.py
+├── core/                  # Django core application (views)
+│   ├── __init__.py
+│   └── views.py
+└── .git/                  # Git version control metadata (not displayed)
 ```
 
 ## 📄 License

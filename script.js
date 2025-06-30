@@ -142,9 +142,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = JSON.parse(event.data);
         // console.log("Parsed SSE data:", data);
 
-        let statusText = data.status;
+        let statusText;
         if (data.current_step) {
-            statusText = data.current_step + " (상태: " + data.status + ")";
+          // If status is STARTED we omit the explicit status label to avoid "(상태: STARTED)" noise.
+          if (data.status === "STARTED") {
+            statusText = data.current_step; // just show the step
+          } else {
+            statusText = `${data.current_step} (상태: ${data.status})`;
+          }
+        } else {
+          // Fallback: use status only when no current_step
+          statusText = data.status;
         }
         statusMessageElement.textContent = "진행 상황: " + statusText;
 
