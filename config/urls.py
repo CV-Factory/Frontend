@@ -27,12 +27,13 @@ urlpatterns = [
     path('health/', views.health_check, name='health_check'),
     # Django 기본 set_language view (POST) 활성화 – 선택사항
     path('i18n/', include('django.conf.urls.i18n')),
+    path('', views.language_switch, name='language_switch'),
 ]
 
 # 언어 코드 접두사가 붙는 URL들
 urlpatterns += i18n_patterns(
     path('', views.index, name='index'),
-    prefix_default_language=False,
+    prefix_default_language=True,
 )
 
 # 개발 환경에서만 정적 파일을 제공합니다.
