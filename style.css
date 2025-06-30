@@ -309,4 +309,10 @@ footer {
 
 #generateButton .button-text {
   margin-right: 5px; /* 스피너가 오른쪽에 올 때의 간격 */
+}
+
+/* Android Chrome에서 글자 자동 확대(text autosizing)로 인한 레이아웃 깨짐 방지 */
+html {
+  -webkit-text-size-adjust: 100%; /* Brave는 기본값 100%, Chrome은 auto → width 오버플로 발생 가능 */
+  text-size-adjust: 100%;
 } 
