@@ -182,8 +182,13 @@
 {% compress js %}
 <script src="{% static 'script.js' %}"></script>
 {% endcompress %}
+
+<!-- Svelte compiled bundle -->
+<script type="module" src="{% static 'build/assets/main.js' %}"></script>  <!-- hashed path resolved by ManifestStaticFilesStorage -->
 </head>
 <body>
+<div id="app"></div>
+
 <header>
   <div class="header-title">
     CVFactory

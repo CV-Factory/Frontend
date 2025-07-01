@@ -148,6 +148,7 @@ STATIC_ROOT = '/app/staticfiles/'
 
 # Directories where Django looks for static files (during development)
 STATICFILES_DIRS = [
+    BASE_DIR / 'static',
     BASE_DIR,
 ]
 
