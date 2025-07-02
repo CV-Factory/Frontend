@@ -229,7 +229,7 @@
   <meta name="keywords" content={$_('meta_keywords')}>
 </svelte:head>
 
-<header>
+<header class:shifted={isSidebarOpen}>
   <div class="header-title" on:mouseenter={() => isSidebarOpen = true}>{$_('header_title')}</div>
 </header>
 
@@ -272,6 +272,11 @@
     height: 60px;
     padding: 0 15px;
     border-bottom: 1px solid #eee;
+    transition: margin-left 0.3s ease-in-out; /* Smooth shift when sidebar toggles */
+  }
+
+  header.shifted {
+    margin-left: 250px; /* Same as sidebar width */
   }
 
   .main-container {
