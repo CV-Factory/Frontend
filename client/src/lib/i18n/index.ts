@@ -8,5 +8,5 @@ register('ko', () => import('./ko.json'));
 
 init({
   fallbackLocale: defaultLocale,
-  initialLocale: browser ? window.navigator.language : defaultLocale,
+  initialLocale: defaultLocale,
 }); 
