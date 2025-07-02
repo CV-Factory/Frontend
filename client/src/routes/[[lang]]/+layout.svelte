@@ -237,14 +237,16 @@
 </main>
 
 <style>
+  :global(html) {
+    height: 100%;
+  }
   :global(body) {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    overflow-y: auto;
+    height: 100%;
     overflow-x: hidden;
   }
   :global(*) {
@@ -254,7 +256,9 @@
   header {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    align-items: center;
+    height: 60px;
+    padding: 0 15px;
     border-bottom: 1px solid #eee;
   }
 
@@ -270,7 +274,8 @@
 
   h1 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    line-height: 1.2;
   }
 
   .prompt-container {
