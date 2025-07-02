@@ -17,7 +17,7 @@
   let eventSource: EventSource | null = null;
   let isSidebarOpen = false;
   let sidebarRef: HTMLElement | null = null;
-  let headerRef: HTMLElement | null = null;
+  let headerTitleRef: HTMLElement | null = null;
 
   const defaultPromptTextKo = `채용 공고 내용과 다음 사용자 프롬프트를 기반으로 자기소개서를 작성해 주세요.
     자기소개서는 한국어로, 전문적이고 회사와 직무에 맞춰 작성되어야 합니다.
@@ -53,7 +53,7 @@
 
     const handleDocClick = (e: MouseEvent) => {
       const target = e.target as Node;
-      if (isSidebarOpen && sidebarRef && !sidebarRef.contains(target) && headerRef && !headerRef.contains(target)) {
+      if (isSidebarOpen && sidebarRef && !sidebarRef.contains(target) && headerTitleRef && !headerTitleRef.contains(target)) {
         isSidebarOpen = false;
       }
     };
@@ -240,7 +240,9 @@
   <meta name="keywords" content={$_('meta_keywords')}>
 </svelte:head>
 
-<header class:shifted={isSidebarOpen} bind:this={headerRef} on:click={() => isSidebarOpen = !isSidebarOpen}>{$_('header_title')}</header>
+<header class:shifted={isSidebarOpen}>
+  <div class="header-title" bind:this={headerTitleRef} on:click={() => isSidebarOpen = !isSidebarOpen}>{$_('header_title')}</div>
+</header>
 
 <div class="main-container" class:shifted={isSidebarOpen}>
   <aside class="sidebar" bind:this={sidebarRef} class:open={isSidebarOpen}>
