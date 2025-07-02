@@ -299,6 +299,9 @@
     padding: 1rem;
     height: 100%;
     overflow-y: auto; /* Allow main content to scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   h1 {
