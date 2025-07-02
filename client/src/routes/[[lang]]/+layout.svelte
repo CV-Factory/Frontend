@@ -282,7 +282,6 @@
     align-items: center;
     height: 60px;
     padding: 0 15px;
-    border-bottom: 1px solid #eee;
     transition: margin-left 0.3s ease-in-out; /* Smooth shift when sidebar toggles */
   }
 
