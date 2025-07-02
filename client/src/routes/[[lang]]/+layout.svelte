@@ -16,6 +16,8 @@
   let isLoading = false;
   let eventSource: EventSource | null = null;
   let isSidebarOpen = false;
+  let sidebarRef: HTMLElement | null = null;
+  let headerTitleRef: HTMLElement | null = null;
 
   const defaultPromptTextKo = `채용 공고 내용과 다음 사용자 프롬프트를 기반으로 자기소개서를 작성해 주세요.
     자기소개서는 한국어로, 전문적이고 회사와 직무에 맞춰 작성되어야 합니다.
@@ -48,6 +50,20 @@
 
     const isKoreanPage = window.location.pathname.startsWith('/ko');
     userPrompt = isKoreanPage ? defaultPromptTextKo : defaultPromptTextEn;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isSidebarOpen) {
+        const target = e.target as Node;
+        if (
+          sidebarRef && !sidebarRef.contains(target) &&
+          headerTitleRef && !headerTitleRef.contains(target)
+        ) {
+          isSidebarOpen = false;
+        }
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   });
 
   function requestNotificationPermission() {
@@ -230,11 +246,11 @@
 </svelte:head>
 
 <header class:shifted={isSidebarOpen}>
-  <div class="header-title" on:mouseenter={() => isSidebarOpen = true}>{$_('header_title')}</div>
+  <div class="header-title" bind:this={headerTitleRef} on:mouseenter={() => isSidebarOpen = true}>{$_('header_title')}</div>
 </header>
 
 <div class="main-container" class:shifted={isSidebarOpen} on:mouseleave={() => isSidebarOpen = false}>
-  <aside class="sidebar" class:open={isSidebarOpen}>
+  <aside class="sidebar" bind:this={sidebarRef} class:open={isSidebarOpen}>
     <!-- Sidebar content goes here -->
     <p>Sidebar</p>
     <ul>
