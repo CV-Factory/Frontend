@@ -219,21 +219,21 @@
 </script>
 
 <svelte:head>
-  <title>CVFactory</title>
+  <title>{$_('page_title')}</title>
   <link rel="canonical" href="https://cvfactory.dev/">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CVFactory를 사용하여 채용 공고와 나만의 스토리를 바탕으로 맞춤형 자기소개서를 쉽게 생성하세요.">
-  <meta name="keywords" content="자기소개서, 자소서, 이력서, 생성, AI, 채용, 취업, CV, Resume, Generator, AI Resume, AI CV">
+  <meta name="description" content={$_('meta_description')}>
+  <meta name="keywords" content={$_('meta_keywords')}>
 </svelte:head>
 
 <header>
-  <div class="header-title">CVFactory</div>
+  <div class="header-title">{$_('header_title')}</div>
 </header>
 
 <main>
-  <slot />
+  <slot {userPrompt} />
 </main>
 
 <style>

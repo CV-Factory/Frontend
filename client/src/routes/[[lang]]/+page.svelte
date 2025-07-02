@@ -1,13 +1,14 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { _ } from 'svelte-i18n';
   import { browser } from '$app/environment';
+  import { _ } from 'svelte-i18n';
+  import { onMount } from 'svelte';
+
+  let userPrompt = '';
 
   const IS_LOCAL = browser && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
   const API_BASE_URL = IS_LOCAL ? 'http://localhost:8001' : 'https://cvfactory-server-627721457878.asia-northeast3.run.app';
 
   let jobUrl = '';
-  let userPrompt = '';
   let generatedResume = '';
   let statusMessage = '';
   let isLoading = false;
@@ -37,10 +38,8 @@
     Use a confident and passionate tone. Instead of simply listing skills, naturally weave the user prompt into the cover letter. If a user prompt is not provided, generate the cover letter based only on the job posting, subtly implying where the user should insert their own experience without explicitly saying things like 'Add your experience here'.`;
 
   onMount(() => {
-    if (browser) {
-      const isKoreanPage = window.navigator.language.startsWith('ko');
-      userPrompt = isKoreanPage ? defaultPromptTextKo : defaultPromptTextEn;
-    }
+    const isKoreanPage = window.location.pathname.startsWith('/ko');
+    userPrompt = isKoreanPage ? defaultPromptTextKo : defaultPromptTextEn;
   });
 
   function requestNotificationPermission() {

@@ -2,5 +2,9 @@
   "main_title": "Please provide the job posting for which you want to generate a cover letter!",
   "job_url_placeholder": "Enter the job posting URL.",
   "generated_resume_placeholder": "The generated cover letter will appear here.",
-  "generate_button": "Generate"
+  "generate_button": "Generate",
+  "page_title": "CVFactory",
+  "header_title": "CVFactory",
+  "meta_description": "Easily generate a personalized cover letter based on the job posting and your own story using CVFactory.",
+  "meta_keywords": "Cover Letter, Resume, Generator, AI, Job, Employment, CV, AI Resume, AI CV"
 } 
