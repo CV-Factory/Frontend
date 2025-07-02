@@ -229,8 +229,8 @@
   <meta name="keywords" content={$_('meta_keywords')}>
 </svelte:head>
 
-<header on:mouseenter={() => isSidebarOpen = true}>
-  <div class="header-title">{$_('header_title')}</div>
+<header>
+  <div class="header-title" on:mouseenter={() => isSidebarOpen = true}>{$_('header_title')}</div>
 </header>
 
 <div class="main-container" on:mouseleave={() => isSidebarOpen = false}>
