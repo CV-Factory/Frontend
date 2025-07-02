@@ -15,6 +15,7 @@
   let statusMessage = '';
   let isLoading = false;
   let eventSource: EventSource | null = null;
+  let isSidebarOpen = false;
 
   const defaultPromptTextKo = `채용 공고 내용과 다음 사용자 프롬프트를 기반으로 자기소개서를 작성해 주세요.
     자기소개서는 한국어로, 전문적이고 회사와 직무에 맞춰 작성되어야 합니다.
@@ -228,12 +229,12 @@
   <meta name="keywords" content={$_('meta_keywords')}>
 </svelte:head>
 
-<header>
+<header on:mouseenter={() => isSidebarOpen = true}>
   <div class="header-title">{$_('header_title')}</div>
 </header>
 
-<div class="main-container">
-  <aside class="sidebar">
+<div class="main-container" on:mouseleave={() => isSidebarOpen = false}>
+  <aside class="sidebar" class:open={isSidebarOpen}>
     <!-- Sidebar content goes here -->
     <p>Sidebar</p>
     <ul>
@@ -285,6 +286,12 @@
     padding: 20px;
     height: 100%; /* Make sidebar full height of the container */
     overflow-y: auto; /* Allow sidebar to scroll if content is long */
+    transition: margin-left 0.3s ease-in-out;
+    margin-left: -290px; /* (width)250px + (padding)40px */
+  }
+
+  .sidebar.open {
+	  margin-left: 0;
   }
 
   main {
