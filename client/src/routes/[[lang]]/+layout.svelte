@@ -246,7 +246,7 @@
 </svelte:head>
 
 <header class:shifted={isSidebarOpen}>
-  <div class="header-title" bind:this={headerTitleRef} on:mouseenter={() => isSidebarOpen = true}>{$_('header_title')}</div>
+  <div class="header-title" bind:this={headerTitleRef} on:mouseenter={() => { if (!isSidebarOpen) isSidebarOpen = true; }}>{$_('header_title')}</div>
 </header>
 
 <div class="main-container" class:shifted={isSidebarOpen} on:mouseleave={() => isSidebarOpen = false}>
