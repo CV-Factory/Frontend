@@ -233,7 +233,7 @@
   <div class="header-title" on:mouseenter={() => isSidebarOpen = true}>{$_('header_title')}</div>
 </header>
 
-<div class="main-container" on:mouseleave={() => isSidebarOpen = false}>
+<div class="main-container" class:shifted={isSidebarOpen} on:mouseleave={() => isSidebarOpen = false}>
   <aside class="sidebar" class:open={isSidebarOpen}>
     <!-- Sidebar content goes here -->
     <p>Sidebar</p>
@@ -283,16 +283,25 @@
     display: flex;
     flex: 1;
     overflow: auto; /* Allows content to scroll if it overflows */
+    transition: margin-left 0.3s ease-in-out;
+  }
+
+  .main-container.shifted {
+    margin-left: 250px; /* Shift content when sidebar is open */
   }
 
   .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 250px;
+    height: 100vh;
     background-color: #f4f4f4;
     padding: 20px;
-    height: 100%; /* Make sidebar full height of the container */
-    overflow-y: auto; /* Allow sidebar to scroll if content is long */
+    overflow-y: auto;
     transition: margin-left 0.3s ease-in-out;
-    margin-left: -290px; /* (width)250px + (padding)40px */
+    margin-left: -290px; /* Hide sidebar by default */
+    z-index: 1000; /* Ensure it sits above content */
   }
 
   .sidebar.open {
