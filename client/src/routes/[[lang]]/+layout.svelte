@@ -232,9 +232,20 @@
   <div class="header-title">{$_('header_title')}</div>
 </header>
 
-<main>
-  <slot {userPrompt} />
-</main>
+<div class="main-container">
+  <aside class="sidebar">
+    <!-- Sidebar content goes here -->
+    <p>Sidebar</p>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <slot {userPrompt} />
+  </main>
+</div>
 
 <style>
   :global(html) {
@@ -262,14 +273,25 @@
     border-bottom: 1px solid #eee;
   }
 
+  .main-container {
+    display: flex;
+    flex: 1;
+    overflow: auto; /* Allows content to scroll if it overflows */
+  }
+
+  .sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100%; /* Make sidebar full height of the container */
+    overflow-y: auto; /* Allow sidebar to scroll if content is long */
+  }
+
   main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    width: 100%;
+    padding: 1rem;
+    height: 100%;
+    overflow-y: auto; /* Allow main content to scroll */
   }
 
   h1 {
