@@ -1,0 +1,6 @@
+{
+  "main_title": "Please provide the job posting for which you want to generate a cover letter!",
+  "job_url_placeholder": "Enter the job posting URL.",
+  "generated_resume_placeholder": "The generated cover letter will appear here.",
+  "generate_button": "Generate"
+} 
