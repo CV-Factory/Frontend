@@ -17,7 +17,6 @@
   let eventSource: EventSource | null = null;
   let isSidebarOpen = false;
   let sidebarRef: HTMLElement | null = null;
-  let headerTitleRef: HTMLElement | null = null;
   let headerRef: HTMLElement | null = null;
 
   const defaultPromptTextKo = `채용 공고 내용과 다음 사용자 프롬프트를 기반으로 자기소개서를 작성해 주세요.
@@ -52,19 +51,14 @@
     const isKoreanPage = window.location.pathname.startsWith('/ko');
     userPrompt = isKoreanPage ? defaultPromptTextKo : defaultPromptTextEn;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (isSidebarOpen) {
-        const target = e.target as Node;
-        if (
-          sidebarRef && !sidebarRef.contains(target) &&
-          headerRef && !headerRef.contains(target)
-        ) {
-          isSidebarOpen = false;
-        }
+    const handleDocClick = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (isSidebarOpen && sidebarRef && !sidebarRef.contains(target) && headerRef && !headerRef.contains(target)) {
+        isSidebarOpen = false;
       }
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    document.addEventListener('click', handleDocClick);
+    return () => document.removeEventListener('click', handleDocClick);
   });
 
   function requestNotificationPermission() {
@@ -246,9 +240,9 @@
   <meta name="keywords" content={$_('meta_keywords')}>
 </svelte:head>
 
-<header class:shifted={isSidebarOpen} bind:this={headerRef} on:mouseenter={() => { if (!isSidebarOpen) isSidebarOpen = true; }}>{$_('header_title')}</header>
+<header class:shifted={isSidebarOpen} bind:this={headerRef} on:click={() => isSidebarOpen = !isSidebarOpen}>{$_('header_title')}</header>
 
-<div class="main-container" class:shifted={isSidebarOpen} on:mouseleave={() => isSidebarOpen = false}>
+<div class="main-container" class:shifted={isSidebarOpen}>
   <aside class="sidebar" bind:this={sidebarRef} class:open={isSidebarOpen}>
     <!-- Sidebar content goes here -->
     <p>Sidebar</p>
