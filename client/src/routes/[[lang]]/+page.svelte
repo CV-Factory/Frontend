@@ -377,7 +377,7 @@
   }
   
   .button-text {
-      margin-right: 5px;
+      margin: 0;
   }
 
   @media (max-width: 768px) {
