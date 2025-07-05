@@ -1,0 +1,50 @@
+name: SonarQube Frontend
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'client/**'
+      - 'core/**'
+      - 'requirements.txt'
+      - '.github/workflows/sonarqube-frontend.yml'
+  pull_request:
+    paths:
+      - 'client/**'
+      - 'core/**'
+
+jobs:
+  scan-frontend:
+    runs-on: ubuntu-latest
+    env:
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      SONAR_TOKEN: ${{ secrets.SONARQUBE_FRONTEND }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node dependencies
+        working-directory: client
+        run: npm ci --ignore-scripts
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          if exist requirements.txt pip install -r requirements.txt || true
+
+      - name: Set up JDK 17 (required for SonarScanner)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: SonarQube Scan (Frontend)
+        uses: SonarSource/sonarqube-scan-action@v2
+        env:
+          SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
+        with:
+          args: >-
+            -Dsonar.projectKey=frontend
+            -Dsonar.sources=client,core
+            -Dsonar.python.version=3.11
+            -Dsonar.exclusions=**/node_modules/**,**/__pycache__/**
