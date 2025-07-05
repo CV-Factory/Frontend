@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 def index(request):
     return render(request, 'index.html')
 
-def health_check(request):
+def health_check(_request):
     return HttpResponse("OK", status=200)
 
 def language_switch(request):

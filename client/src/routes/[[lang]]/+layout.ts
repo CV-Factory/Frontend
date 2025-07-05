@@ -20,7 +20,7 @@ export const load: LayoutLoad = async ({ params }) => {
     throw error(404, 'Not Found');
   }
 
-  const lang = langParam || 'en';
+  const lang = langParam ?? 'en';
   if (browser) {
     locale.set(lang);
   }
