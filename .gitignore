@@ -16,9 +16,15 @@ venv/
 # IDE files
 .vscode/
 .idea/
+.qodo/
 
 # Node modules (if using Node)
 node_modules/
+
+# SonarQube
+.scannerwork/
+sonar-scanner*/
+*.zip
 
 # Docker artifacts
 *.container
