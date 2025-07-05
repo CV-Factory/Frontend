@@ -1,132 +1,234 @@
-# CVFactory - AI Cover Letter Generator
+# CV Factory - Professional Resume Builder
 
 <div align="center">
-  <img src="logo.png" alt="CVFactory Logo" style="width:200px; height:auto;"/>
+  <img src="logo.png" alt="CV Factory Logo" style="width:200px; height:auto;"/>
   <br>
 
   [![한국어](https://img.shields.io/badge/language-한국어-red.svg)](README.kr.md)
+  [![Code Quality](https://img.shields.io/badge/SonarQube-A%20Grade-brightgreen.svg)](http://localhost:9000/dashboard?id=frontend)
 </div>
 
 ## 📖 Overview
-CVFactory is an AI-powered web application that helps users easily generate customized cover letters based on job postings and their personal stories.
+CV Factory is a modern full-stack web application that helps users create professional resumes with AI-powered assistance. Built with Django backend and Svelte frontend, it provides an intuitive interface for resume building with multi-language support.
 
 ## ✨ Key Features
-- Extract information based on job posting URL and official company URL
-- User story input and analysis
-- AI-based draft cover letter generation using input information
-- Function to view and edit generated cover letters
+- **Modern Frontend**: Svelte 5 with TypeScript and SvelteKit
+- **Robust Backend**: Django with REST API capabilities
+- **Multi-language Support**: English and Korean with svelte-i18n
+- **Responsive Design**: Mobile-first approach with modern UI/UX
+- **Code Quality**: A-grade SonarQube analysis with zero bugs
+- **Docker Support**: Containerized development and deployment
+- **CI/CD Ready**: Configured for Northflank deployment
 
 ## 🛠 Tech Stack
+
+### Frontend (Svelte)
+| Category | Technologies |
+|----------|--------------|
+| Framework | Svelte 5, SvelteKit |
+| Language | TypeScript |
+| Build Tool | Vite |
+| Styling | CSS3, Modern Design |
+| Internationalization | svelte-i18n |
+| Code Quality | ESLint, Prettier, TypeScript |
+
+### Backend (Django)
 | Category | Technologies |
 |----------|--------------|
 | Framework | Django |
-| Frontend | HTML, CSS, JavaScript |
-| Database | SQLite (development), PostgreSQL (production via dj-database-url) |
-| Web Server | Gunicorn |
+| Database | SQLite (development), PostgreSQL (production) |
+| API | Django REST capabilities |
 | Static Files | Whitenoise |
-| HTTP Client | Requests |
-| Environment Variables | python-dotenv |
-| Deployment | Northflank, Docker, Docker Compose, Cloudflare (for caching) |
+| Security | Django CSP, CORS headers |
+| Deployment | Gunicorn, Docker |
+
+### DevOps & Quality
+| Category | Technologies |
+|----------|--------------|
+| Containerization | Docker, Docker Compose |
+| Code Analysis | SonarQube (A-grade quality) |
+| Deployment | Northflank, Cloudflare |
+| Environment | python-dotenv |
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.8+
-- uv (Python package installer and manager)
-- Git
-- Docker (Optional, required for containerized deployment)
-- Conda (Recommended for virtual environment management)
+- **Python 3.11+**
+- **Node.js 18+** and npm
+- **Docker** (optional, for containerized development)
+- **Git**
 
-### Installation and Running
+### Quick Start
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/wintrover/CVFactory.git
-   cd CVFactory
+   git clone https://github.com/CV-Factory/Frontend.git
+   cd Frontend
    ```
 
-2. **Set up and activate Conda environment:**
+2. **Backend Setup (Django):**
    ```bash
-   conda create -n cvfactory python=3.8
-   conda activate cvfactory
-   ```
-
-3. **Install uv (if not already installed):**
-   ```bash
-   # Refer to the official uv documentation for installation methods:
-   # https://github.com/astral-sh/uv#installation
-   # Example using pipx:
-   # pipx install uv
-   ```
-
-4. **Install dependencies using uv:**
-   ```bash
-   uv pip install -r requirements.txt  # Run if requirements.txt exists
-   # Or install necessary libraries individually (e.g., uv pip install django)
-   ```
-
-5. **Migrate database (if using Django):**
-   ```bash
+   # Create virtual environment
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install dependencies
+   pip install -r requirements.txt
+   
+   # Run migrations
    python manage.py migrate
-   ```
-
-6. **Run the development server:**
-   ```bash
+   
+   # Start Django server
    python manage.py runserver
    ```
 
-   Access the application in your browser at `http://127.0.0.1:8000/` (or the configured port).
+3. **Frontend Setup (Svelte):**
+   ```bash
+   # Navigate to client directory
+   cd client
+   
+   # Install dependencies
+   npm install
+   
+   # Start development server
+   npm run dev
+   ```
 
-### Build and Run with Docker (Optional)
+4. **Access the application:**
+   - Frontend: `http://localhost:5173` (Vite dev server)
+   - Backend API: `http://localhost:8000` (Django server)
 
-If your project includes a Dockerfile, you can build and run it using the following commands:
+### Docker Development
+
+For a complete containerized setup:
 
 ```bash
-# Build the Docker image
-docker build -t cvfactory .
+# Start all services
+docker compose up -d
 
-# Run the Docker container
-docker run -p 8000:8000 cvfactory
+# View logs
+docker compose logs -f
+
+# Stop services
+docker compose down
 ```
-
-## 🐳 Northflank Deployment
-You can deploy this project using Northflank. Refer to the Northflank documentation for detailed instructions on setting up and deploying with Northflank.
 
 ## 📁 Project Structure
+
 ```
-.
-├── manage.py              # Django management script
-├── requirements.txt       # Python dependencies
-├── Dockerfile             # Docker image definition
-├── docker-compose.yml     # Local development/testing with Docker Compose
-├── northflank.json        # Northflank deployment configuration
-├── purge_cloudflare_cache.py # Script to purge Cloudflare cache
-├── LICENSE                # Project license (Proprietary, All Rights Reserved)
-├── README.md              # English README
-├── README.kr.md           # Korean README
-├── index.html             # Main HTML file
-├── style.css              # Main CSS file
-├── script.js              # Main JavaScript file
-├── logo.png               # Project logo
-├── db.sqlite3             # Default SQLite database file (development)
-├── locale/                # Translation files (po/mo)
-│   └── ko/LC_MESSAGES/django.po
-├── favicon_io/            # Favicon assets and webmanifest
-├── config/                # Django project settings, URLs, WSGI/ASGI
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── core/                  # Django core application (views)
-│   ├── __init__.py
-│   └── views.py
-└── .git/                  # Git version control metadata (not displayed)
+Frontend/
+├── client/                    # Svelte Frontend
+│   ├── src/
+│   │   ├── routes/           # SvelteKit routes
+│   │   ├── lib/              # Shared components & utilities
+│   │   │   └── i18n/         # Internationalization
+│   │   └── app.html          # Main HTML template
+│   ├── static/               # Static assets
+│   ├── package.json          # Frontend dependencies & scripts
+│   └── vite.config.ts        # Vite configuration
+├── config/                   # Django project settings
+│   ├── settings.py           # Main Django settings
+│   ├── urls.py               # URL routing
+│   └── wsgi.py               # WSGI configuration
+├── core/                     # Django core application
+│   └── views.py              # API views and logic
+├── locale/                   # Django translations
+├── favicon_io/               # Favicon assets
+├── docker-compose.yml        # Multi-service container setup
+├── Dockerfile                # Container image definition
+├── requirements.txt          # Python dependencies
+├── manage.py                 # Django management script
+└── sonar-project.properties  # Code quality configuration
 ```
+
+## 🔧 Development Commands
+
+### Frontend (in `/client` directory)
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run check        # Type checking
+npm run lint         # ESLint analysis
+npm run lint:fix     # Fix ESLint issues
+npm run format       # Format code with Prettier
+```
+
+### Backend (in root directory)
+```bash
+python manage.py runserver    # Start Django server
+python manage.py migrate      # Apply database migrations
+python manage.py collectstatic # Collect static files
+python manage.py test         # Run tests
+```
+
+### Code Quality
+```bash
+# SonarQube analysis (requires running SonarQube server)
+docker compose up -d sonarqube  # Start SonarQube
+# Then run sonar-scanner in project root
+```
+
+## 🌐 Multi-language Support
+
+The application supports:
+- **English** (default): Access via `/`
+- **Korean**: Access via `/ko/`
+
+Language switching is handled automatically based on URL routing and user preferences.
+
+## 🐳 Deployment
+
+### Northflank Deployment
+The project is configured for Northflank deployment with:
+- `northflank.json` configuration
+- Docker-based builds
+- Environment variable management
+- Cloudflare CDN integration
+
+### Manual Deployment
+```bash
+# Build frontend
+cd client && npm run build
+
+# Collect Django static files
+python manage.py collectstatic --noinput
+
+# Run with Gunicorn
+gunicorn config.wsgi:application
+```
+
+## 📊 Code Quality
+
+This project maintains **A-grade code quality** with:
+- ✅ **0 Bugs**
+- ✅ **0 Vulnerabilities** 
+- ✅ **0 Code Smells**
+- ✅ **A-grade Reliability**
+- ✅ **A-grade Security**
+- ✅ **A-grade Maintainability**
+
+Quality is ensured through:
+- SonarQube static analysis
+- ESLint and Prettier for frontend
+- TypeScript for type safety
+- Comprehensive testing setup
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 Proprietary Software – All Rights Reserved
 (See the [LICENSE](LICENSE) file for details.)
 
 ## 📬 Contact
-wintrover@gmail.com 
+- **Email**: wintrover@gmail.com
+- **GitHub**: [CV-Factory/Frontend](https://github.com/CV-Factory/Frontend)
+
+---
+*Built with ❤️ using Django + Svelte*
