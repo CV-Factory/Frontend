@@ -101,7 +101,7 @@ You can deploy this project using Northflank. Refer to the Northflank documentat
 ├── docker-compose.yml     # Local development/testing with Docker Compose
 ├── northflank.json        # Northflank deployment configuration
 ├── purge_cloudflare_cache.py # Script to purge Cloudflare cache
-├── LICENSE                # Project license (Proprietary, All Rights Reserved)
+├── LICENSE                # Project license (Apache License 2.0)
 ├── README.md              # English README
 ├── README.kr.md           # Korean README
 ├── index.html             # Main HTML file
@@ -125,7 +125,7 @@ You can deploy this project using Northflank. Refer to the Northflank documentat
 ```
 
 ## 📄 License
-Proprietary Software – All Rights Reserved
+Apache License 2.0  
 (See the [LICENSE](LICENSE) file for details.)
 
 ## 📬 Contact

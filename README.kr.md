@@ -101,7 +101,7 @@ Northflank를 사용하여 이 프로젝트를 배포할 수 있습니다. North
 ├── docker-compose.yml     # Docker Compose를 사용한 로컬 개발/테스트
 ├── northflank.json        # Northflank 배포 설정
 ├── purge_cloudflare_cache.py # Cloudflare 캐시 퍼지 스크립트
-├── LICENSE                # 프로젝트 라이선스 (비공개, All Rights Reserved)
+├── LICENSE                # 프로젝트 라이선스 (Apache License 2.0)
 ├── README.md              # 영어 README
 ├── README.kr.md           # 한국어 README
 ├── index.html             # 메인 HTML 파일
@@ -123,3 +123,7 @@ Northflank를 사용하여 이 프로젝트를 배포할 수 있습니다. North
 │   └── views.py
 └── .git/                  # Git 버전 관리 메타데이터 (숨김)
 ```
+
+## 📄 라이선스
+Apache License 2.0  
+자세한 내용은 [LICENSE](LICENSE) 파일을 확인하세요.
