@@ -223,12 +223,8 @@ Quality is ensured through:
 5. Open a Pull Request
 
 ## 📄 License
-Proprietary Software – All Rights Reserved
-(See the [LICENSE](LICENSE) file for details.)
+Licensed under the Apache License 2.0
+Full license text: [LICENSE](LICENSE)
 
 ## 📬 Contact
 - **Email**: wintrover@gmail.com
-- **GitHub**: [CV-Factory/Frontend](https://github.com/CV-Factory/Frontend)
-
----
-*Built with ❤️ using Django + Svelte*

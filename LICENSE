@@ -1,9 +1,24 @@
-Copyright (c) 2025 CVFactory
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
 
-All Rights Reserved.
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
-Unauthorized copying, reproduction, modification, distribution, publication, or other use of this software, in whole or in part, is strictly prohibited without the express prior written consent of the copyright holder.
+1. Definitions.
+"License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.
 
-This software is proprietary and confidential. By accessing, downloading, or using this software, you agree to be bound by these terms. If you do not agree with these terms, you are not permitted to use this software.
+[... Standard Apache 2.0 License Text ...]
 
-For licensing inquiries, please contact: wintrover@gmail.com 
+Copyright 2025 CVFactory
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

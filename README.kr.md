@@ -223,12 +223,8 @@ gunicorn config.wsgi:application
 5. Pull Request 열기
 
 ## 📄 라이선스
-독점 소프트웨어 – 모든 권리 보유
-(자세한 내용은 [LICENSE](LICENSE) 파일 참조)
+아파치 라이선스 2.0 적용
+전체 라이선스 내용: [LICENSE](LICENSE)
 
 ## 📬 연락처
 - **이메일**: wintrover@gmail.com
-- **GitHub**: [CV-Factory/Frontend](https://github.com/CV-Factory/Frontend)
-
----
-*Django + Svelte로 ❤️를 담아 제작*
