@@ -1,38 +1,34 @@
-# Use an official Python runtime as a parent image
-FROM python:3.11-slim
-
-# Set the working directory in the container
+# ---------- client build stage ----------
+FROM node:20 AS client-build
 WORKDIR /app
+
+# Copy only the Svelte client source
+COPY client/ ./client
+WORKDIR /app/client
+
+# Install and build Svelte assets
+RUN npm install --legacy-peer-deps ; npm run build
+
+# ---------- python runtime stage ----------
+FROM python:3.11-slim AS runtime
+WORKDIR /srv
 
 ENV DJANGO_SETTINGS_MODULE=config.settings
 
-# Add the current directory contents into the container at /app
-COPY . /app
+# Install Python dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install uv globally in the container
-RUN apt-get update && apt-get install -y curl && \
-    apt-get install -y gettext && \
-    curl -LsSf https://astral.sh/uv/install.sh | sh
+# Copy Django project
+COPY . /srv
 
-# Add uv to the PATH
-ENV PATH="/root/.local/bin:$PATH"
+# Copy built static assets from previous stage
+COPY --from=client-build /app/static/ /srv/static/
 
-# Install any needed packages specified in requirements.txt using uv
-# Make sure requirements.txt exists in your project root
-RUN uv pip install --no-cache-dir --system -r requirements.txt
-RUN mkdir -p /app/staticfiles
+# Prepare static root and collect static files
+RUN mkdir -p /srv/staticfiles && \
+    python manage.py collectstatic --noinput -v 0
 
-# django-compressor가 강제로 파일을 다시 압축하도록 함
-RUN python manage.py compress --force
-RUN python manage.py compilemessages
-
-RUN python manage.py collectstatic --noinput -v 3
-
-# Remove diagnostic print statements (no longer needed)
-# RUN python manage.py shell -c "from django.conf import settings; print(f'DEBUG: STATIC_ROOT from Django settings: {settings.STATIC_ROOT}'); import os; print(f'DEBUG: Path {settings.STATIC_ROOT} exists: {os.path.exists(settings.STATIC_ROOT)}'); print(f'DEBUG: Path {settings.STATIC_ROOT} is directory: {os.path.isdir(settings.STATIC_ROOT)}')"
-
-# Expose the port the app runs on
 EXPOSE 8000
 
-# Run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"] 
+CMD gunicorn --bind 0.0.0.0:8000 config.wsgi:application 
